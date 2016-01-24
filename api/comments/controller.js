@@ -1,3 +1,4 @@
+var Comment = require('./comments')
 
 exports.show = function(req,res){
   Comment.find({}, function(err, comments){
