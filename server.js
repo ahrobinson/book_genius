@@ -3,7 +3,6 @@ var app = express()
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var jwt = require('jsonwebtoken');
-var config = require('./config/config');
 var mongoose = require('mongoose')
 var db = require('./api/db/mongo')
 
@@ -37,6 +36,7 @@ app.get('/setup', function(req, res) {
 
 app.use('/api/users', require('./api/users/routes'));
 app.use('/api/comments', require('./api/comments/routes'));
+app.use('/api/auth/local', require('./auth/local'))
 
 app.use(express.static('client'))
 app.listen(port)

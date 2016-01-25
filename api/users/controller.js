@@ -19,9 +19,9 @@ exports.showOne = function(req,res){
 
 }
 exports.create = function(req,res){
-  User.find({username: req.body.username}, function(err, user){
+  User.findOne({username: req.body.username}, function(err, user){
     console.log(user)
-    if(!user.length){
+    if(!user){
       console.log('hi')
       var newUser = new User({
         username: req.body.username,
