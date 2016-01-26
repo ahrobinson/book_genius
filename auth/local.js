@@ -3,20 +3,19 @@ var jwt = require('jsonwebtoken');
 var config = require('../config/config');
 var User = require('../api/users/users');
 
+
 router.post('/', function(req, res){
   var usersName = req.body.username;
   var pass = req.body.password;
   console.log(req.body.username)
   User.findOne({
-    username: usersName
-  }).then(function(err, user){
-    if(err){
-      throw err
-    }
+    username: req.body.username
+  }).then(function(user){
     console.log('user: ', user)
     if(!user){
       res.json({ success: false, message: 'Authentication failed. User not found.' });
     } else if(user){
+      console.log('user found!')
       //password doesn't match
       if(user.password !== pass){
         res.json({ success: false, message: 'Authentication failed. Incorrect password.' });
@@ -24,7 +23,7 @@ router.post('/', function(req, res){
         // if user is found and password is right
         // create a token
         var token = jwt.sign(user, config.secret, {
-          expiresIn: "24h"
+          expiresIn: 86400
         });
 
         res.json({
@@ -34,6 +33,8 @@ router.post('/', function(req, res){
         });
       }
     }
+  }).then(function(err){
+    console.log(err)
   })
 });
 
