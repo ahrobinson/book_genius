@@ -1,7 +1,12 @@
-app.config(function($routeProvider){
+app.config(function($routeProvider, $locationProvider){
   $routeProvider
   .when('/', {
-    templateUrl: 'main.html',
+    templateUrl: 'main/main.html',
     controller: 'MainController'
   })
+
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
 })

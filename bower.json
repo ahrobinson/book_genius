@@ -1,0 +1,23 @@
+{
+  "name": "book-genius",
+  "description": "Crowd sourced book annotations",
+  "main": "server.js",
+  "authors": [
+    "Alon Robinson <ahrobins3@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ahrobinson/book_genius",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.4.9",
+    "jquery": "^2.2.0"
+  }
+}
