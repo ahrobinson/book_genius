@@ -1,10 +1,10 @@
 <div class="">
-  <form class="">
+  <form class="" ng-submit="register()">
     <label>Username:</label>
-    <input type="text" name="name" value="">
+    <input type="text" ng-model="user.username">
     <label>Password:</label>
-    <input type="password" name="name" value="">
-    <button type="submit" name="button">Login</button>
-    <a href='/register'>Register</a>
+    <input type="password" ng-model="user.password">
+    <button>Register</button>
+    <a href='/login'>Log In</a>
   </form>
 </div>
