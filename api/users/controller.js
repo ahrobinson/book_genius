@@ -24,7 +24,6 @@ exports.create = function(req,res){
   User.findOne({username: req.body.username}, function(err, user){
     console.log(user)
     if(!user){
-      console.log('hi')
       var newUser = new User({
         username: req.body.username,
         password: req.body.password,
@@ -33,7 +32,15 @@ exports.create = function(req,res){
         if(err){
           res.send(err)
         } else {
-          res.send('User saved!')
+          var token = jwt.sign(user, config.secret, {
+            expiresIn: 86400
+          });
+
+          res.json({
+            success: true,
+            message: 'User saved! Take your token!',
+            token: token
+          });
         }
       })
     } else {
